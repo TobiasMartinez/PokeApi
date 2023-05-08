@@ -1,0 +1,11 @@
+@import './components/CardPokemon/index.scss';
+
+.home{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+    height: 100%;
+}
