@@ -3,5 +3,10 @@
   flex-direction: row;
   flex-wrap: wrap;
   margin: 0 auto;
+  gap: 1rem;
+
+  &__item{
+    max-width: 400px;
+  }
 }
         

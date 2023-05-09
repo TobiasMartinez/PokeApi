@@ -3,7 +3,7 @@
 import React, { useState} from "react";
 import ReactCardFlip from "react-card-flip";
 
-const CardPokemon = ({ title, img }) => {
+const CardPokemon = ({ title, img, weight, height, stats}) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleClick = () => {
@@ -17,8 +17,14 @@ const CardPokemon = ({ title, img }) => {
       item.style.display = "none";
       e.target.style.display = "none";
     });
-
   }
+
+  const statABuscar = (statName) => {
+    const stat = stats.find((stat) => stat.stat.name === statName);
+
+    return stat.base_stat; 
+  };
+
 
 
   return (
@@ -29,41 +35,41 @@ const CardPokemon = ({ title, img }) => {
 
           <div className="card-front__image">
             <img
-              src="https://images.wikidexcdn.net/mwuploads/wikidex/3/32/latest/20080909114656/Psyduck.png?20080909114656"
+              src={img}
               alt="pokemon" />
           </div>
-          <h1 className="card-front__title">Psyduck</h1>
+          <h1 className="card-front__title">{title.charAt(0).toUpperCase() + title.slice(0)}</h1>
           <div className="card-front__stats">
             <div className="card-front__stats-item">
-              <p className="card-front__stats-item-value">55</p>
+              <p className="card-front__stats-item-value">{statABuscar('speed')}</p>
               <p className="card-front__stats-item-name">SPD</p>
             </div>
             <div className="card-front__stats-item">
-              <p className="card-front__stats-item-value">50</p>
+              <p className="card-front__stats-item-value">{statABuscar('special-defense')}</p>
               <p className="card-front__stats-item-name">DEF-S</p>
             </div>
             <div className="card-front__stats-item">
-              <p className="card-front__stats-item-value">65</p>
+              <p className="card-front__stats-item-value">{statABuscar('special-attack')}</p>
               <p className="card-front__stats-item-name">ATT-S</p>
             </div>
             <div className="card-front__stats-item">
-              <p className="card-front__stats-item-value">48</p>
+              <p className="card-front__stats-item-value">{statABuscar('defense')}</p>
               <p className="card-front__stats-item-name">DEF</p>
             </div>
             <div className="card-front__stats-item">
-              <p className="card-front__stats-item-value">52</p>
+              <p className="card-front__stats-item-value">{statABuscar('attack')}</p>
               <p className="card-front__stats-item-name">ATT</p>
             </div>
             <div className="card-front__stats-item">
-              <p className="card-front__stats-item-value">50</p>
+              <p className="card-front__stats-item-value">{statABuscar('hp')}</p>
               <p className="card-front__stats-item-name">HP</p>
             </div>
             <div className="card-front__stats-item">
-              <p className="card-front__stats-item-value">0.8m</p>
+              <p className="card-front__stats-item-value">{height}</p>
               <p className="card-front__stats-item-name">HEIGHT</p>
             </div>
             <div className="card-front__stats-item">
-              <p className="card-front__stats-item-value">19.6kg</p>
+              <p className="card-front__stats-item-value">{weight}</p>
               <p className="card-front__stats-item-name">WEIGHT</p>
             </div>
           </div>
